@@ -1,0 +1,18 @@
+{
+  "lat_min": 5,
+  "lat_max": 10,
+  "lon_min": 78,
+  "lon_max": 83,
+  "min_elev": -35.0,
+  "max_elev": 2523.0,
+  "high": {
+    "width": 1024,
+    "height": 1024,
+    "file": "heights_high.bin"
+  },
+  "low": {
+    "width": 256,
+    "height": 256,
+    "file": "heights_low.bin"
+  }
+}

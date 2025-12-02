@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Sri Lanka 3D Elevation (USGS NPZ)</title>
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+      font-family: system-ui, sans-serif;
+    }
+
+    #app {
+      width: 100%;
+      height: 100%;
+    }
+
+    #overlay {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 10;
+      padding: 8px 10px;
+      background: rgba(0, 0, 0, 0.55);
+      color: #fff;
+      border-radius: 6px;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/"
+  }
+}
+</script>
+
+<body>
+  <div id="overlay">
+    <strong>Sri Lanka 3D Elevation (USGS NPZ)</strong><br />
+    Left-drag: rotate<br />
+    Right-drag / Ctrl-drag: pan<br />
+    Scroll: zoom (switches low/high-res)<br /><br />
+
+    <!-- Elevation exaggeration -->
+    <label for="exaggerationSlider">Elevation exaggeration:</label><br />
+
+    <input id="exaggerationSlider" type="range" min="0.1" max="5" step="0.1" value="0.6" />
+
+    <input id="exaggerationInput" type="number" min="0.1" max="5" step="0.1" value="0.6"
+      style="width: 40px; margin-left: 6px;" />
+    <span>×</span>
+
+    <br /><br />
+
+    <!-- 🔹 Overlay toggle -->
+    <label>
+      <input id="overlayToggle" type="checkbox" checked />
+      Show map overlay
+    </label>
+    <br />
+
+    <!-- 🔹 Overlay transparency slider -->
+    <label for="overlayAlphaSlider">
+      Overlay transparency:
+      <span id="overlayAlphaValue">0.3</span>
+    </label><br />
+    <input id="overlayAlphaSlider" type="range" min="0" max="1" step="0.05" value="0.3" />
+    <div>
+      Zoom level: <span id="zoomLevel">0</span>
+    </div>
+    <div>
+      Location:
+      <span id="latLonLabel">Lat: -, Lon: -</span>
+    </div>
+    <br />
+    <div>
+      Elevation(m):
+      <span id="elevLabel">-</span>
+    </div>
+    <br />
+    <div>
+      Camera Distance:
+      <span id="camDistanceLabel">-</span>
+    </div>
+    <br />
+    <label>
+      <input id="toggleLabels" type="checkbox" checked>
+      Show marker labels
+    </label>
+    <br /><br />
+    <label for="heatmapValues">
+      Heatmap Values:
+    </label><br />
+    <span id="elevLabel">
+      <input id="heatmapStep1" type="number" min="0" max="1" step="0.001" value="0.01" /><br />
+      <input id="heatmapStep2" type="number" min="0" max="1" step="0.001" value="0.05" /><br />
+      <input id="heatmapStep3" type="number" min="0" max="1" step="0.001" value="0.33" /><br />
+      <input id="heatmapStep4" type="number" min="0" max="1" step="0.001" value="0.66" /><br />
+    </span>
+  </div>
+
+
+  <br />
+
+
+  <div id="app"></div>
+  <!-- 🔹 Only your app as ES module -->
+  <script type="module" src="main.js"></script>
+</body>
+
+
+
+
+</html>
